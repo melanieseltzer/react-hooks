@@ -1,8 +1,8 @@
-# 📦 React Parcel
+# ⚛️ React Hooks
 
-> Spend less time configuring and more time developing
+Playing around with the new React Hooks API. Use state without having to write a class. Best of all, there's no breaking changes 👌😀
 
-Simple React + Parcel starter with ESLint and Prettier. Because the worst part of modern development is configuring the build tools 🙃
+Read more about the awesomeness [here](https://reactjs.org/docs/hooks-reference.html).
 
 ## 🚀 Run the dev server
 
