@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import InputRange from 'react-input-range';
 import styled, { createGlobalStyle } from 'styled-components';
 
@@ -12,26 +12,37 @@ export default function Style() {
   const [width, setWidth] = useState(style.width);
   const [height, setHeight] = useState(style.height);
 
+  const sizes = [
+    {
+      name: 'Width',
+      value: width
+    },
+    {
+      name: 'Height',
+      value: height
+    }
+  ];
+
   return (
     <SizeStyle>
       <div>
         <GlobalStyle />
-        <H2>Width:</H2>
-        <InputRange
-          maxValue={320}
-          minValue={0}
-          value={width}
-          onChange={value => setWidth(value)}
-          formatLabel={value => `${value}px`}
-        />
-        <H2>Height:</H2>
-        <InputRange
-          maxValue={320}
-          minValue={0}
-          value={height}
-          onChange={value => setHeight(value)}
-          formatLabel={value => `${value}px`}
-        />
+        {sizes.map(size => (
+          <Fragment key={size.name}>
+            <H2>{size.name}</H2>
+            <InputRange
+              maxValue={320}
+              minValue={0}
+              value={size.value}
+              onChange={
+                size.name === 'Width'
+                  ? value => setWidth(value)
+                  : value => setHeight(value)
+              }
+              formatLabel={value => `${value}px`}
+            />
+          </Fragment>
+        ))}
       </div>
       <StyleContext.Provider value={{ width, height }}>
         <Square />
