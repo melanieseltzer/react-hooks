@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useState } from 'react';
 import InputRange from 'react-input-range';
+import { CirclePicker } from 'react-color';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import 'react-input-range/lib/css/index.css';
@@ -11,22 +12,23 @@ export default function Style() {
   const style = useContext(StyleContext);
   const [width, setWidth] = useState(style.width);
   const [height, setHeight] = useState(style.height);
+  const [activeColor, setActiveColor] = useState(style.activeColor);
 
   const sizes = [
     {
-      name: 'Width',
+      name: 'width',
       value: width
     },
     {
-      name: 'Height',
+      name: 'height',
       value: height
     }
   ];
 
   return (
     <SizeStyle>
-      <div>
-        <GlobalStyle />
+      <div className="controls">
+        <GlobalStyle activeColor={activeColor} />
         {sizes.map(size => (
           <Fragment key={size.name}>
             <H2>{size.name}</H2>
@@ -35,7 +37,7 @@ export default function Style() {
               minValue={0}
               value={size.value}
               onChange={
-                size.name === 'Width'
+                size.name === 'width'
                   ? value => setWidth(value)
                   : value => setHeight(value)
               }
@@ -43,8 +45,16 @@ export default function Style() {
             />
           </Fragment>
         ))}
+
+        <H2>background color:</H2>
+        <CirclePicker
+          color={activeColor}
+          onChange={color => setActiveColor(color.hex)}
+        />
       </div>
-      <StyleContext.Provider value={{ width, height }}>
+
+      {/* Send the context to the square */}
+      <StyleContext.Provider value={{ width, height, activeColor }}>
         <Square />
       </StyleContext.Provider>
     </SizeStyle>
@@ -57,10 +67,10 @@ const GlobalStyle = createGlobalStyle`
   }
   .input-range__track--active,
   .input-range__slider {
-    background: tomato;
+    background: ${props => props.activeColor};
   }
   .input-range__slider {
-    border-color: tomato;
+    border-color: ${props => props.activeColor};
   }
   .input-range__label-container {
     left: 0;
@@ -77,9 +87,10 @@ const H2 = styled.h2`
 
 const SizeStyle = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 320px;
   grid-column-gap: 3rem;
+  grid-row-gap: 2rem;
   @media (min-width: 768px) {
-    grid-template-columns: 340px 340px;
+    grid-template-columns: 320px 320px;
   }
 `;
