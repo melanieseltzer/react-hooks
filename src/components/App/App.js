@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Arial, Helvetica, sans-serif;
   }
   #root {
-    margin: 1rem;
+    margin: 4rem 2rem;
   }
 `;
 
