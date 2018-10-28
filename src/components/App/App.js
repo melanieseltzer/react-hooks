@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { AppContext } from '../../context';
 import Controls from '../Controls';
 import Square from '../Square';
+import Footer from '../Footer';
 
 export default function App() {
   const style = useContext(AppContext);
@@ -29,6 +30,7 @@ export default function App() {
           <Square />
         </AppContext.Provider>
       </AppStyle>
+      <Footer />
     </Container>
   );
 }
