@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-export default function Square(props) {
-  const { width, height } = props;
-  return <SquareStyle height={height} width={width} />;
+import { StyleContext } from '../../context';
+
+export default function Square() {
+  const style = useContext(StyleContext);
+  const { width, height } = style;
+
+  return <SquareStyle width={width} height={height} />;
 }
 
 const SquareStyle = styled.div`
