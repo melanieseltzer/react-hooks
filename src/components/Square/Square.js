@@ -1,14 +1,19 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import { StyleContext } from '../../context';
+import { AppContext } from '../../context';
 
 export default function Square() {
-  const style = useContext(StyleContext);
-  const { width, height, activeColor } = style;
+  const styles = useContext(AppContext);
+  const { width, height, activeColor } = styles;
 
   return (
-    <SquareStyle width={width} height={height} activeColor={activeColor} />
+    <SquareStyle
+      className="square"
+      width={width}
+      height={height}
+      activeColor={activeColor}
+    />
   );
 }
 
