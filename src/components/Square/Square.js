@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { AppContext } from '../../context';
 
 export default function Square() {
-  const styles = useContext(AppContext);
-  const { width, height, activeColor } = styles;
+  const { state } = useContext(AppContext);
+  const { width, height, activeColor } = state;
 
   return (
     <SquareStyle
