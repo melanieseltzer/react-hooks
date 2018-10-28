@@ -8,30 +8,27 @@ import 'react-input-range/lib/css/index.css';
 import { AppContext } from '../../context';
 
 export default function Controls() {
-  const styles = useContext(AppContext);
-  const {
-    width,
-    setWidth,
-    height,
-    setHeight,
-    activeColor,
-    setActiveColor
-  } = styles;
+  const { state, dispatch } = useContext(AppContext);
+
+  const setWidth = value => dispatch({ type: 'width', payload: value });
+  const setHeight = value => dispatch({ type: 'height', payload: value });
+  const setActiveColor = color =>
+    dispatch({ type: 'activeColor', payload: color });
 
   const sizes = [
     {
       name: 'width',
-      value: width
+      value: state.width
     },
     {
       name: 'height',
-      value: height
+      value: state.height
     }
   ];
 
   return (
     <div className="controls">
-      <GlobalControlStyle activeColor={activeColor} />
+      <GlobalControlStyle activeColor={state.activeColor} />
       {sizes.map(size => (
         <Fragment key={size.name}>
           <H2>{size.name}</H2>
@@ -41,8 +38,8 @@ export default function Controls() {
             value={size.value}
             onChange={
               size.name === 'width'
-                ? value => setWidth(value)
-                : value => setHeight(value)
+                ? width => setWidth(width)
+                : height => setHeight(height)
             }
             formatLabel={value => `${value}px`}
           />
@@ -51,7 +48,7 @@ export default function Controls() {
 
       <H2>background color:</H2>
       <CirclePicker
-        color={activeColor}
+        color={state.activeColor}
         onChange={color => setActiveColor(color.hex)}
       />
     </div>

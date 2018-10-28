@@ -1,34 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import { AppContext } from '../../context';
+import { AppContextProvider } from '../../context';
 import Controls from '../Controls';
 import Square from '../Square';
 import Footer from '../Footer';
 
 export default function App() {
-  const style = useContext(AppContext);
-  const [width, setWidth] = useState(style.width);
-  const [height, setHeight] = useState(style.height);
-  const [activeColor, setActiveColor] = useState(style.activeColor);
-
   return (
     <Container>
       <GlobalStyle />
       <AppStyle>
-        <AppContext.Provider
-          value={{
-            width,
-            setWidth,
-            height,
-            setHeight,
-            activeColor,
-            setActiveColor
-          }}
-        >
+        <AppContextProvider>
           <Controls />
           <Square />
-        </AppContext.Provider>
+        </AppContextProvider>
       </AppStyle>
       <Footer />
     </Container>
