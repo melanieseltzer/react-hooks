@@ -4,7 +4,7 @@
   "description": "Playing with the new React Hooks api.",
   "main": "index.js",
   "scripts": {
-    "start": "parcel public/index.html",
+    "start": "parcel public/index.html --open",
     "build": "parcel build public/index.html"
   },
   "author": "Melanie Seltzer <melleh11@gmail.com>",
