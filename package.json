@@ -3,12 +3,28 @@
   "version": "1.0.0",
   "description": "Playing with the new React Hooks api.",
   "main": "index.js",
+  "author": "Melanie Seltzer <melleh11@gmail.com>",
   "scripts": {
     "start": "parcel public/index.html --open",
-    "build": "parcel build public/index.html"
+    "build": "parcel build public/index.html",
+    "lint": "eslint 'src/**/*.js'",
+    "prettier": "prettier --write"
   },
-  "author": "Melanie Seltzer <melleh11@gmail.com>",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run prettier",
+      "eslint --ignore-path .eslintignore",
+      "git add"
+    ]
+  },
   "dependencies": {
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "react": "^16.7.0-alpha.0",
     "react-color": "^2.14.1",
     "react-dom": "^16.7.0-alpha.0",
