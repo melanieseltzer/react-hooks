@@ -23,8 +23,6 @@
     ]
   },
   "dependencies": {
-    "husky": "^1.2.0",
-    "lint-staged": "^8.1.0",
     "react": "^16.7.0-alpha.2",
     "react-color": "^2.14.1",
     "react-dom": "^16.7.0-alpha.2",
@@ -42,6 +40,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "parcel-bundler": "^1.10.3",
     "prettier": "^1.15.3"
   }
