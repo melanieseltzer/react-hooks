@@ -1,6 +1,6 @@
 # ⚛️ React Hooks
 
-> https://react-hooks.netlify.com/
+> https://react-hooks-example-app.netlify.app/
 
 Playing around with the new React Hooks API. Use state without having to write a class. Best of all, there's no breaking changes 👌😀
 
